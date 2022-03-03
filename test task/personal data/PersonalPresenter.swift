@@ -14,11 +14,19 @@ protocol PersonalPresenterProtocol: class {
     func NoNewChild()
     func yesNewChild()
     func ClearActive()
+    func ClearChildren()
     func addNewChildren()
     func deleteChild(_ view: ChildView)
 }
 
 class PersonalPresenter: PersonalPresenterProtocol {
+    func ClearChildren() {
+        for i in children{
+            self.view.deletChild(i)
+            interactor.delChild()
+        }
+    }
+    
     func yesNewChild() {
         view.enabledNewChildren()
     }

@@ -136,11 +136,13 @@ class ViewController: UIViewController {
     @objc func ClearChildren(){
         let alert = UIAlertController(title: "Предупреждение", message: "Вы уверенны что хотите удолить все?", preferredStyle: .actionSheet)
             
-            alert.addAction(UIAlertAction(title: "Сбросить данные", style: .default , handler:{ (UIAlertAction)in
-                print("Сбросить данные")
+        alert.addAction(UIAlertAction(title: "Сбросить данные", style: .destructive , handler:{ (UIAlertAction) in
+            self.presenter.ClearChildren()
+            self.inputName.text = ""
+            self.inputAge.text = ""
             }))
             
-            alert.addAction(UIAlertAction(title: "Отмена", style: .default , handler:{ (UIAlertAction)in
+            alert.addAction(UIAlertAction(title: "Отмена", style: .cancel , handler:{ (UIAlertAction)in
                 print("Отмена")
             }))
 

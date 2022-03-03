@@ -18,9 +18,6 @@ class PersonalIteractor: PersonalIteractorProtocol {
             presenter.yesNewChild()
         }
         countChildren -= 1
-        if (countChildren == 0){
-            presenter.ClearDisActive()
-        }
     }
     var countChildren = 0
     func addChildren() {
