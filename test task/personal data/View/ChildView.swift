@@ -37,10 +37,20 @@ class ChildView: UIStackView {
         let buttonAddChildren = UIButton()
         buttonAddChildren.translatesAutoresizingMaskIntoConstraints = false
         buttonAddChildren.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        buttonAddChildren.addTarget(self, action: #selector(deleters), for: .touchDown)
         buttonAddChildren.setTitle("Удалить", for: .normal)
+        
         buttonAddChildren.setTitleColor(.systemBlue, for: .normal)
         return buttonAddChildren
     }()
+    
+    var presenter: PersonalPresenter?
+    
+    @objc func deleters(){
+        print("aaaa")
+        presenter?.deleteChild(self)
+    }
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
