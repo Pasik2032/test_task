@@ -103,7 +103,7 @@ class ViewController: UIViewController {
         stackView.addArrangedSubview(inputName)
         stackView.addArrangedSubview(inputAge)
         stackView.addArrangedSubview(stackChild)
-        
+        stackView.addArrangedSubview(ChildView())
     }
     
     private func setupLayout() {
