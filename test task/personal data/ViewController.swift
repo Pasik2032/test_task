@@ -30,10 +30,6 @@ class ViewController: UIViewController {
         presenter.configureView()
     }
     
-    let colorButton = CGColor(red: 70, green: 167, blue: 246, alpha: 1)
-    let UIColorButton = UIColor(red: 70, green: 167, blue: 246, alpha: 1)
-    
-    
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -71,8 +67,6 @@ class ViewController: UIViewController {
         control._placeholder = "Имя"
         return control
     }()
-    
-    
     
     let inputAge: InputField = {
         let control = InputField()
@@ -135,20 +129,21 @@ class ViewController: UIViewController {
     
     @objc func ClearChildren(){
         let alert = UIAlertController(title: "Предупреждение", message: "Вы уверенны что хотите удолить все?", preferredStyle: .actionSheet)
-            
-        alert.addAction(UIAlertAction(title: "Сбросить данные", style: .destructive , handler:{ (UIAlertAction) in
-            self.presenter.ClearChildren()
-            self.inputName.text = ""
-            self.inputAge.text = ""
-            }))
-            
-            alert.addAction(UIAlertAction(title: "Отмена", style: .cancel , handler:{ (UIAlertAction)in
-                print("Отмена")
-            }))
-
         
-
-            self.present(alert, animated: true)
+        alert.addAction(UIAlertAction(title: "Сбросить данные", style: .destructive , handler:
+                                        {[weak self] (UIAlertAction) in
+            self?.presenter.ClearChildren()
+            self?.inputName.text = ""
+            self?.inputAge.text = ""
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel , handler:{ (UIAlertAction)in
+            print("Отмена")
+        }))
+        
+        
+        
+        self.present(alert, animated: true)
     }
 }
 
@@ -188,6 +183,7 @@ extension ViewController: PersonalViewProtocol {
         stackView.addArrangedSubview(inputName)
         stackView.addArrangedSubview(inputAge)
         stackView.addArrangedSubview(stackChild)
+        stackView.addArrangedSubview(buttonClearChildren)
     }
     
     func setupLayout() {
